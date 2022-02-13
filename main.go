@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
@@ -13,6 +14,7 @@ import (
 
 // think I need a global array of timers declared here
 var t [21]Timer
+var refreshInit bool = false
 
 func main() {
 
@@ -30,6 +32,7 @@ func main() {
 	http.HandleFunc("/start/", Start)
 	http.HandleFunc("/stop/", Stop)
 	http.HandleFunc("/refresh/", Refresh)
+	http.HandleFunc("/getrunning/", GetRunning)
 
 	log.Println("Starting server...")
 	err := http.ListenAndServe(":8090", nil)
@@ -56,12 +59,9 @@ func Start(w http.ResponseWriter, r *http.Request) {
 
 	x, _ := strconv.Atoi(timerIndex)
 
-	t[x].StartTimer()
-
-	// so something is fucked with this, if I call StartTimer() my console prints that the timer started. The problem is that the webpage reports it has NOT started.
-	// Calling the StartTimer() method seems to do FUCKING NOTHING
-	// However, it works completely fine when directly modifying the bool from this function. What the fuck?
-	// OK I figured it out. My methods were written as func (t Timer) instead of func (t *Timer) so my methods were not actually mutating the struct they were pointed at
+	if !t[x].Running {
+		t[x].StartTimer()
+	}
 }
 
 func Stop(w http.ResponseWriter, r *http.Request) {
@@ -69,40 +69,23 @@ func Stop(w http.ResponseWriter, r *http.Request) {
 	timerIndex := strings.Split(ti, "/stop/")[1]
 
 	x, _ := strconv.Atoi(timerIndex)
-	t[x].PauseTimer()
+
+	if t[x].Running {
+		t[x].PauseTimer()
+	}
 }
 
-// I tried to write a buffered version here but it doesn't help at all.
-// I also do not understand the concept of double buffering so this is useless until I figure it out
-// func Refresh(w http.ResponseWriter, r *http.Request) {
-// 	var s string
-// 	var buffer string
-// 	for {
-// 		fmt.Print(buffer)
-// 		time.Sleep(1 * time.Second)
-// 		ClearConsole()
-// 		s = ""
-// 		for i := 1; i < 21; i++ {
-// 			if t[i].Running {
-// 				s += "Timer "
-// 				s += strconv.Itoa(i)
-// 				s += ": "
-// 				s += strconv.Itoa(t[i].Elapsed)
-// 				s += "\n"
-// 				t[i].Elapsed--
-// 			} else if !t[i].Running {
-// 				s += "Timer "
-// 				s += strconv.Itoa(i)
-// 				s += ": "
-// 				s += "PAUSED"
-// 				s += "\n"
-// 			}
-// 		}
-// 		buffer = s
-// 	}
-// }
-
 func Refresh(w http.ResponseWriter, r *http.Request) {
+
+	// NOTE: Need a method to make sure refresh only runs ONCE, multiple refreshes make the timer run at sonic the hedgehog speed
+
+	if refreshInit {
+		fmt.Println("Refresh already init")
+		return
+	}
+
+	refreshInit = true
+
 	for {
 		time.Sleep(1 * time.Second)
 		ClearConsole()
@@ -115,4 +98,26 @@ func Refresh(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 	}
+}
+
+func GetRunning(w http.ResponseWriter, r *http.Request) {
+
+	ti := fmt.Sprint(r.URL) // Write the r.URL to a string
+	timerIndex := strings.Split(ti, "/getrunning/")[1]
+	index, _ := strconv.Atoi(timerIndex)
+
+	w.Header().Set("Content-Type", "application/json") // set header to JSON
+	w.Header().Set("Access-Control-Allow-Origin", "null")
+	response := make(map[string]string)
+	if t[index].Running {
+		response["Running"] = "true"
+	} else {
+		response["Running"] = "false"
+	}
+	jsonResponse, err := json.Marshal(response)
+	if err != nil {
+		log.Fatal("JSON marshalling error: ", err)
+	}
+	// fmt.Println(string(jsonResponse))
+	w.Write(jsonResponse)
 }

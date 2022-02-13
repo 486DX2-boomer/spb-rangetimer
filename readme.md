@@ -24,6 +24,8 @@ https://stackoverflow.com/questions/22796620/multiple-countdown-timers-on-one-pa
 
 https://javascript.info/fetch
 
+https://javascript.info/promise-api
+
 https://www.educba.com/javascript-button/ 
 
 No, I don't know how to make Javascript buttons off the top of my head. Javascript is a bad and I avoid learning it at ALL COSTS.
@@ -33,3 +35,11 @@ https://tutorialedge.net/golang/creating-simple-web-server-with-golang/
 https://stackoverflow.com/questions/64032097/can-i-get-a-fetch-function-to-repeat-every-few-seconds
 
 https://stackoverflow.com/questions/34842526/update-console-without-flickering-c
+
+https://cssbuttons.io
+
+https://css.gg
+
+https://code-boxx.com/simple-javascript-stopwatch/
+
+https://golangbyexample.com/json-response-body-http-go/
