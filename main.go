@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"log"
@@ -14,12 +15,12 @@ import (
 
 // think I need a global array of timers declared here
 var t [21]Timer
-var refreshInit bool = false
+var updateInit bool = false
 
 func main() {
 
 	for i := range t {
-		t[i].Init()
+		t[i].Init(i)
 	}
 
 	var c Config
@@ -31,8 +32,9 @@ func main() {
 	http.HandleFunc("/hello", Hello)
 	http.HandleFunc("/start/", Start)
 	http.HandleFunc("/stop/", Stop)
-	http.HandleFunc("/refresh/", Refresh)
+	http.HandleFunc("/update/", Update)
 	http.HandleFunc("/getrunning/", GetRunning)
+	http.HandleFunc("/getstate/", GetState)
 
 	log.Println("Starting server...")
 	err := http.ListenAndServe(":8090", nil)
@@ -75,16 +77,24 @@ func Stop(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func Refresh(w http.ResponseWriter, r *http.Request) {
+func Clear(w http.ResponseWriter, r *http.Request) {
+	ti := fmt.Sprint(r.URL) // Write the r.URL to a string
+	timerIndex := strings.Split(ti, "/clear/")[1]
 
-	// NOTE: Need a method to make sure refresh only runs ONCE, multiple refreshes make the timer run at sonic the hedgehog speed
+	x, _ := strconv.Atoi(timerIndex)
 
-	if refreshInit {
-		fmt.Println("Refresh already init")
+	t[x].ClearTimer()
+}
+
+func Update(w http.ResponseWriter, r *http.Request) {
+
+	// Ensure Update is run only once
+	if updateInit {
+		// Update already initialized
 		return
 	}
 
-	refreshInit = true
+	updateInit = true
 
 	for {
 		time.Sleep(1 * time.Second)
@@ -120,4 +130,29 @@ func GetRunning(w http.ResponseWriter, r *http.Request) {
 	}
 	// fmt.Println(string(jsonResponse))
 	w.Write(jsonResponse)
+}
+
+func GetState(w http.ResponseWriter, r *http.Request) {
+
+	w.Header().Set("Content-Type", "application/json") // set header to JSON
+	w.Header().Set("Access-Control-Allow-Origin", "null")
+
+	ti := fmt.Sprint(r.URL) // Write the r.URL to a string
+	timerIndex := strings.Split(ti, "/getstate/")[1]
+	index, _ := strconv.Atoi(timerIndex)
+
+	var response bytes.Buffer
+
+	state, err := json.Marshal(t[index])
+	if err != nil {
+		log.Fatal("JSON marshalling error: ", err)
+	}
+	response.Write(state)
+	fmt.Println(response.String())
+	w.Write(response.Bytes())
+	// Reset only needed because I was trying to send everything in one JSON with a loop
+	// I want to refactor this so I send one request and get the state of all 20 timers with one request
+	// Instead of sending 20 requests every second
+	// But I don't know how
+	response.Reset()
 }

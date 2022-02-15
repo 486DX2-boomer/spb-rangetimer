@@ -5,13 +5,15 @@ An array of server-side stopwatches for shooting range use.
 ##
 
 To Do
-- [ ] Figure out how to call Refresh() without typing the URL in (lol)
+- [x] Figure out how to call Refresh() without typing the URL in (lol)
 - [ ] All of the front end work (has to look good because customers will see it)
-- [ ] Front end fetch the timers from the server and display them in DOM
-  - [ ] Do not know how to refresh this every second- a fetch request every second? Sounds expensive
+- [x] Front end fetch the timers from the server and display them in DOM
+  - [x] Do not know how to refresh this every second- a fetch request every second? Sounds expensive
+  - [ ] I am just doing 20 fetch requests a second until I figure out how to fix this
 - [ ] Convert integer to time (3600 seconds == 1 hour on screen)
-- [ ] Start, Stop, Custom Time Interval (Hour, half hour, or arbitrary time), Reset Time, Reserved for Member, Out of Order
+- [ ] ~~Start~~, ~~Stop~~, Clear Timer, Half Hour, Hour, Custom Time Interval (Hour, half hour, or arbitrary time),  Reserved for Member, Out of Order
 - [ ] Having an array of 21 timers starting at 1 and ending at 20 is kind of iffy, don't know if I want to do 0-19 and then translate the value at the frontend. Either way is confusing
+- [ ] I want to refactor this so I send one request and get the state of all 20 timers with one request instead of sending 20 requests every second (But I couldn't figure out how)
 - [ ] Hide Timer Buttons (For range use, so savvy customers don't reset their own timers)
 
 ## References

@@ -4,13 +4,17 @@ package main
 // Every second just decrement one from the time int. Easy
 
 type Timer struct {
-	Elapsed int // Time elapsed, in seconds (eg 3600 for 1 hour)
-	Running bool
+	Id         int  `json:"Id"`      // Timer unique ID, 1-20
+	Elapsed    int  `json:"Elapsed"` // Time elapsed, in seconds (eg 3600 for 1 hour)
+	Running    bool `json:"Running"`
+	Reserved   bool `json:"Reserved"` // Reserved for member
+	OutOfOrder bool `json:"OutOfOrder"`
 }
 
-func (t *Timer) Init() {
+func (t *Timer) Init(index int) {
 	t.Elapsed = 3600
 	t.Running = false
+	t.Id = index
 }
 
 func (t *Timer) StartTimer() {
