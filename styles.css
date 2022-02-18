@@ -1,6 +1,5 @@
 body {
-    background-color:rgb(53, 31, 31);
-    margin: 12px;
+    background: radial-gradient(#d46000, #e27b7b);
 }
 
 .master-container {
@@ -9,17 +8,19 @@ body {
     flex-wrap: wrap;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     /* font-family:'Rajdhani'; */
-    justify-content: left;
+    justify-content: center;
 }
 
 .timer-container {
-    margin: 17px;
-    padding: 8px;
+    max-height: 200px;
+    margin: 12px;
+    padding: 10px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgb(65, 65, 65);
+    background-color: rgb(44, 44, 44);
+    background: linear-gradient(#5a5a5a, #333333);
     border-radius: 12px;
     filter: drop-shadow(4px 4px 0px rgba(0, 0, 0, 0.473));
 }
@@ -27,23 +28,29 @@ body {
 .timer {
     color: white;
     font-size: 44pt;
-    padding: 2px;
+    padding: 1px;
     padding-right: 6px;
+    filter: drop-shadow(3px 2px 1px black);
 }
 
 .timer-number {
-    color:rgb(255, 174, 0);
-    font-size: 20pt;
+    color:rgb(255, 204, 93);
+    font-size: 26pt;
     font-weight: bold;
-    padding: 4px;
+    padding-right: 4px;
     filter: drop-shadow(2px 2px 0px black);
 }
 
 /* Buttons */
 
+.button-container {
+    flex: row;
+}
+
 button {
-    max-height: 40%;
-    max-width: 40%;
+    visibility: visible;
+    /* max-height: 40%; */
+    /* max-width: 40%; */
     margin: 2px;
     padding: 4px;
     font-size: 12px;
@@ -64,9 +71,10 @@ button {
     background-color: #f14f4f;
     box-shadow: 0px 15px 20px rgba(39, 4, 4, 0.4);
     color: rgb(255, 255, 255);
-    transform: translateY(-7px);
+    /* transform: translateY(-7px); */
    }
    
    button:active {
-    transform: translateY(-1px);
+    transform: scale(0.75);
+    background-color:rgb(255, 255, 255);
    }

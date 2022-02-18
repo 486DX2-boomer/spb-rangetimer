@@ -30,6 +30,13 @@ An array of server-side stopwatches for shooting range use.
 <button>🛎</button>
 ```
 
+*Format seconds as an integer value into a stopwatch value*
+
+I like this answer. It can be even shorter: 
+```
+new Date(1000 * seconds).toISOString().substr(11, 8)
+```
+
 ## References
 
 https://code-boxx.com/simple-javascript-stopwatch/
@@ -61,3 +68,7 @@ https://code-boxx.com/simple-javascript-stopwatch/
 https://golangbyexample.com/json-response-body-http-go/
 
 https://www.flaticon.com/
+
+https://stackoverflow.com/questions/6312993/javascript-seconds-to-time-string-with-format-hhmmss
+
+https://www.sitepoint.com/css-sizing-absolute-position/
