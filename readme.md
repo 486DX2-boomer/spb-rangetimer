@@ -2,6 +2,8 @@
 
 An array of server-side stopwatches for shooting range use.
 
+CTRL + Shift + H to hide the control buttons. This is intended to be used for the screens inside the range and provides a cleaner look to customers.
+
 ## To Do
 
 - [x] Figure out how to call Refresh() without typing the URL in (lol)
@@ -78,3 +80,7 @@ https://css-tricks.com/content-jumping-avoid/
 https://itnext.io/how-to-stop-content-jumping-when-images-load-7c915e47f576
 
 https://frontendresource.com/css-cards/
+
+https://code-boxx.com/shortcut-keys-javascript/
+
+https://wangchujiang.com/hotkeys/

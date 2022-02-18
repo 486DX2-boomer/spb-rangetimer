@@ -76,11 +76,25 @@ window.addEventListener("load", Update);
 
 // Convert an integer to a string in the format 00:00:00 (eg 3600 to 01:00:00)
 function FormatTime(seconds) {
-  let time = new Date(1000 * seconds).toISOString().substr(11, 8)
+  let time = new Date(1000 * seconds).toISOString().substr(11, 8);
   return time;
 }
 
 async function RedrawTimers(id, elapsed) {
   let target = document.getElementById("timer" + id);
   target.innerHTML = FormatTime(elapsed);
+}
+
+hotkeys("ctrl+shift+h", function (event, handler) {
+  switch (handler.key) {
+    case "ctrl+shift+h":
+      hideButtons();
+      break;
+    default:
+      alert(event);
+  }
+});
+
+function hideButtons() {
+  alert("Hide Buttons Triggered");
 }
