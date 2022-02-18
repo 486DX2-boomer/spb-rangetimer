@@ -9,6 +9,7 @@ type Timer struct {
 	Running    bool `json:"Running"`
 	Reserved   bool `json:"Reserved"` // Reserved for member
 	OutOfOrder bool `json:"OutOfOrder"`
+	Member     bool `json:"Member"`
 }
 
 func (t *Timer) Init(index int) {
@@ -26,8 +27,11 @@ func (t *Timer) PauseTimer() {
 }
 
 func (t *Timer) ClearTimer() {
-	t.Elapsed = 0
+	t.Elapsed = 3600
 	t.Running = false
+	t.Reserved = false
+	t.OutOfOrder = false
+	t.Member = false
 }
 
 func (t *Timer) GetElapsed() int {

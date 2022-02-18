@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 130 86" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(1,0,0,1,-2.00167,-23.9583)">
+        <g id="VIP-Icon" serif:id="VIP Icon">
+            <g transform="matrix(0.98464,0,0,1,1.024,14.5833)">
+                <path d="M129.167,23.583C129.167,17.466 124.123,12.5 117.91,12.5L15.423,12.5C9.21,12.5 4.167,17.466 4.167,23.583L4.167,80.583C4.167,86.7 9.21,91.667 15.423,91.667L117.91,91.667C124.123,91.667 129.167,86.7 129.167,80.583L129.167,23.583Z" style="fill:none;stroke:black;stroke-width:6.3px;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-1.42109e-14,9.25)">
+                <path d="M8.333,75L125,75" style="fill:none;stroke:black;stroke-width:4.17px;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-1.42109e-14,6.25)">
+                <path d="M8.333,87.5L125,87.5" style="fill:none;stroke:black;stroke-width:4.17px;"/>
+            </g>
+            <g transform="matrix(2.35361,0,0,2.35361,-35.8776,-43.061)">
+                <text x="21.391px" y="50.527px" style="font-family:'FranklinGothic-Medium', 'Franklin Gothic Medium', sans-serif;font-size:25px;">VIP</text>
+            </g>
+        </g>
+    </g>
+</svg>

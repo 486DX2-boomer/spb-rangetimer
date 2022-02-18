@@ -32,6 +32,7 @@ func main() {
 	http.HandleFunc("/hello", Hello)
 	http.HandleFunc("/start/", Start)
 	http.HandleFunc("/stop/", Stop)
+	http.HandleFunc("/clear/", Clear)
 	http.HandleFunc("/update/", Update)
 	http.HandleFunc("/getrunning/", GetRunning)
 	http.HandleFunc("/getstate/", GetState)
@@ -95,7 +96,7 @@ func Update(w http.ResponseWriter, r *http.Request) {
 	}
 
 	updateInit = true
-
+	// Update timer each second
 	for {
 		time.Sleep(1 * time.Second)
 		ClearConsole()
@@ -103,6 +104,10 @@ func Update(w http.ResponseWriter, r *http.Request) {
 			if t[i].Running {
 				fmt.Println("Timer ", i, ":", t[i].Elapsed)
 				t[i].Elapsed--
+				// Clear timer if expired
+				if t[i].Elapsed == 0 {
+					t[i].ClearTimer()
+				}
 			} else if !t[i].Running {
 				fmt.Println("Timer ", i, ":", "PAUSED")
 			}

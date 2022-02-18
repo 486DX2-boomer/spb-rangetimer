@@ -2,9 +2,8 @@
 
 An array of server-side stopwatches for shooting range use.
 
-##
+## To Do
 
-To Do
 - [x] Figure out how to call Refresh() without typing the URL in (lol)
 - [ ] All of the front end work (has to look good because customers will see it)
 - [x] Front end fetch the timers from the server and display them in DOM
@@ -15,6 +14,21 @@ To Do
 - [ ] Having an array of 21 timers starting at 1 and ending at 20 is kind of iffy, don't know if I want to do 0-19 and then translate the value at the frontend. Either way is confusing
 - [ ] I want to refactor this so I send one request and get the state of all 20 timers with one request instead of sending 20 requests every second (But I couldn't figure out how)
 - [ ] Hide Timer Buttons (For range use, so savvy customers don't reset their own timers)
+
+## Code Snippets
+
+*Emoji button setup*
+```     
+<button onclick="startTimer('1')">▶</button>
+<button onclick="stopTimer('1')">||</button>
+<button onclick="clearTimer('1')">⯀</button>
+<!-- Out of Order -->
+<button>❌</button>
+<!-- Member -->
+<button>🤴</button>
+<!-- Reservation -->
+<button>🛎</button>
+```
 
 ## References
 
@@ -45,3 +59,5 @@ https://css.gg
 https://code-boxx.com/simple-javascript-stopwatch/
 
 https://golangbyexample.com/json-response-body-http-go/
+
+https://www.flaticon.com/
