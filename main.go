@@ -99,17 +99,18 @@ func Update(w http.ResponseWriter, r *http.Request) {
 	// Update timer each second
 	for {
 		time.Sleep(1 * time.Second)
-		ClearConsole()
+		// ClearConsole()
 		for i := 1; i < 21; i++ {
 			if t[i].Running {
-				fmt.Println("Timer ", i, ":", t[i].Elapsed)
+				// fmt.Println("Timer ", i, ":", t[i].Elapsed)
 				t[i].Elapsed--
 				// Clear timer if expired
-				if t[i].Elapsed == 0 {
+				if t[i].Elapsed <= 0 {
 					t[i].ClearTimer()
 				}
-			} else if !t[i].Running {
-				fmt.Println("Timer ", i, ":", "PAUSED")
+				// } else if !t[i].Running {
+				// 	fmt.Println("Timer ", i, ":", "PAUSED")
+				// }
 			}
 		}
 	}
@@ -153,7 +154,7 @@ func GetState(w http.ResponseWriter, r *http.Request) {
 		log.Fatal("JSON marshalling error: ", err)
 	}
 	response.Write(state)
-	fmt.Println(response.String())
+	// fmt.Println(response.String())
 	w.Write(response.Bytes())
 	// Reset only needed because I was trying to send everything in one JSON with a loop
 	// I want to refactor this so I send one request and get the state of all 20 timers with one request

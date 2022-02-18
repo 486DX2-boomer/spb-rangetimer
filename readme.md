@@ -72,3 +72,9 @@ https://www.flaticon.com/
 https://stackoverflow.com/questions/6312993/javascript-seconds-to-time-string-with-format-hhmmss
 
 https://www.sitepoint.com/css-sizing-absolute-position/
+
+https://css-tricks.com/content-jumping-avoid/
+
+https://itnext.io/how-to-stop-content-jumping-when-images-load-7c915e47f576
+
+https://frontendresource.com/css-cards/
