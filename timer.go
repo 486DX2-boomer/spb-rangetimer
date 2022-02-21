@@ -10,6 +10,7 @@ type Timer struct {
 	Reserved   bool `json:"Reserved"` // Reserved for member
 	OutOfOrder bool `json:"OutOfOrder"`
 	Member     bool `json:"Member"`
+	Expired    bool `json:"Expired"` // True if time left is 0
 }
 
 func (t *Timer) Init(index int) {

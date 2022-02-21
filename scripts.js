@@ -95,6 +95,26 @@ hotkeys("ctrl+shift+h", function (event, handler) {
   }
 });
 
+let buttonsHidden = false;
+
 function hideButtons() {
-  alert("Hide Buttons Triggered");
+  let p = document.getElementsByClassName("button-container");
+
+  if (buttonsHidden == false) {
+    for (i = 0; i < p.length; i++) {
+      p[i].style.display = "none";
+    }
+    
+    console.log("Buttons hidden");
+    buttonsHidden = true;
+    
+  } else if (buttonsHidden == true) {
+    for (i = 0; i < p.length; i++) {
+      p[i].style.display = "block";
+    }
+    
+    console.log("Buttons visible");
+    buttonsHidden = false;
+
+  }
 }

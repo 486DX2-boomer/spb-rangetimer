@@ -11,11 +11,12 @@ body {
 }
 
 .timer-container {
-  min-width: 255px;
-  margin-top: 6px;
-  margin-bottom: 6px;
-  margin-left: 8px;
-  margin-right: 8px;
+  min-width: 300px;
+  min-height: 180px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  margin-left: 12px;
+  margin-right: 12px;
   padding: 9px;
   display: flex;
   flex-direction: column;
@@ -29,7 +30,7 @@ body {
 
 .timer {
   color: white;
-  font-size: 44pt;
+  font-size: 50pt;
   padding: 1px;
   padding-right: 6px;
   filter: drop-shadow(3px 2px 1px black);
@@ -37,13 +38,14 @@ body {
 
 .timer-number {
   color: rgb(255, 204, 93);
-  font-size: 26pt;
+  font-size: 32pt;
   font-weight: bold;
   padding-right: 4px;
   filter: drop-shadow(2px 2px 0px black);
 }
 
 .footer {
+  flex-direction: column;
   color: white;
   background: linear-gradient(#292929, #333333);
   border-radius: 12px;
