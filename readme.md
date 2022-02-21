@@ -6,7 +6,7 @@ CTRL + Shift + H to hide the control buttons. This is intended to be used for th
 
 ## To Do
 
-- [ ] ~~Start~~, ~~Stop~~, ~~Clear Timer~~, Half Hour, Hour, Custom Time Interval (Hour, half hour, or arbitrary time),  Reserved for Member, ~~Out of Order~~
+- [ ] ~~Start~~, ~~Stop~~, ~~Clear Timer~~, Half Hour, Hour, Custom Time Interval (Hour, half hour, or arbitrary time), ~~Reserved for Member~~, ~~Out of Order~~
 - [ ] Add expiration behavior to timers (timers should stay at 0:00 and clear manually instead of auto clearing)
 - [ ] Having an array of 21 timers starting at 1 and ending at 20 is kind of iffy, don't know if I want to do 0-19 and then translate the value at the frontend. Either way is confusing
 - [ ] Refactor this so I send one request and get the state of all 20 timers with one request instead of sending 20 requests every second (But I couldn't figure out how)

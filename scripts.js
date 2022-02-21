@@ -62,15 +62,14 @@ async function Update() {
       console.log("Fetching state");
       fetch("http://localhost:8090/getstate/" + i)
         .then((response) => response.json())
-        .then((data) => RedrawTimers(data.Id, data.Elapsed, data.Member, data.Reserved, data.OutOfOrder));
-        // .then((data) => RedrawTimers(data.Id, data.Elapsed, data.Running, data.Member, data.OutOfOrder));
+        .then((data) => RedrawTimers(data.Id, data.Elapsed, data.Member, data.Reserved, data.OutOfOrder, data.Expired));
     }
     await delay(1000);
   }
 }
 window.addEventListener("load", Update);
 
-async function RedrawTimers(id, elapsed, member, reserved, outOfOrder) {
+async function RedrawTimers(id, elapsed, member, reserved, outOfOrder, expired) {
   let target = document.getElementById("timer" + id);
   let tn = document.getElementById("tn" + id);
   target.innerHTML = FormatTime(elapsed);
@@ -86,6 +85,10 @@ async function RedrawTimers(id, elapsed, member, reserved, outOfOrder) {
 
   if (outOfOrder) {
     target.innerHTML = `<span class="outOfOrderMessage">Out of Order</span>`
+  }
+
+  if (expired) {
+    target.innerHTML = `<span class="expiredMessage">00:00:00</span>`
   }
 
 }

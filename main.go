@@ -105,15 +105,12 @@ func Update(w http.ResponseWriter, r *http.Request) {
 		// ClearConsole()
 		for i := 1; i < 21; i++ {
 			if t[i].Running {
-				// fmt.Println("Timer ", i, ":", t[i].Elapsed)
 				t[i].Elapsed--
-				// Clear timer if expired
+				// Stop timer if out of time
 				if t[i].Elapsed <= 0 {
-					t[i].ClearTimer()
+					t[i].Running = false
+					t[i].Expired = true
 				}
-				// } else if !t[i].Running {
-				// 	fmt.Println("Timer ", i, ":", "PAUSED")
-				// }
 			}
 		}
 	}

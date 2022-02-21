@@ -67,3 +67,7 @@ func (t *Timer) SetReserved() {
 		t.Reserved = false
 	}
 }
+
+func (t *Timer) SetExpired() {
+	t.Expired = true
+}
