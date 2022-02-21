@@ -36,6 +36,9 @@ func main() {
 	http.HandleFunc("/update/", Update)
 	http.HandleFunc("/getrunning/", GetRunning)
 	http.HandleFunc("/getstate/", GetState)
+	http.HandleFunc("/member/", SetMember)
+	http.HandleFunc("/reserved/", SetReserved)
+	http.HandleFunc("/outoforder/", SetOutOfOrder)
 
 	log.Println("Starting server...")
 	err := http.ListenAndServe(":8090", nil)
@@ -161,4 +164,31 @@ func GetState(w http.ResponseWriter, r *http.Request) {
 	// Instead of sending 20 requests every second
 	// But I don't know how
 	response.Reset()
+}
+
+func SetMember(w http.ResponseWriter, r *http.Request) {
+	ti := fmt.Sprint(r.URL) // Write the r.URL to a string
+	timerIndex := strings.Split(ti, "/member/")[1]
+
+	x, _ := strconv.Atoi(timerIndex)
+
+	t[x].SetMember()
+}
+
+func SetReserved(w http.ResponseWriter, r *http.Request) {
+	ti := fmt.Sprint(r.URL) // Write the r.URL to a string
+	timerIndex := strings.Split(ti, "/reserved/")[1]
+
+	x, _ := strconv.Atoi(timerIndex)
+
+	t[x].SetReserved()
+}
+
+func SetOutOfOrder(w http.ResponseWriter, r *http.Request) {
+	ti := fmt.Sprint(r.URL) // Write the r.URL to a string
+	timerIndex := strings.Split(ti, "/outoforder/")[1]
+
+	x, _ := strconv.Atoi(timerIndex)
+
+	t[x].SetOutOfOrder()
 }

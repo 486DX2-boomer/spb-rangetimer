@@ -23,6 +23,19 @@ async function getRunning(buttonNumber) {
     .then((response) => response.json())
     .then((data) => console.log(data));
 }
+async function setOutOfOrder(buttonNumber) {
+  fetch("http://localhost:8090/outoforder/" + buttonNumber, { mode: "no-cors" });
+}
+
+async function setMember(buttonNumber) {
+  fetch("http://localhost:8090/member/" + buttonNumber, { mode: "no-cors" });
+
+}
+
+async function setReserved(buttonNumber) {
+  fetch("http://localhost:8090/reserved/" + buttonNumber, { mode: "no-cors" });
+}
+
 
 // const timer1 = document.getElementById("timer1");
 // const timer2 = document.getElementById("timer2");
@@ -66,8 +79,7 @@ async function Update() {
       console.log("Fetching state");
       fetch("http://localhost:8090/getstate/" + i)
         .then((response) => response.json())
-        .then((data) => RedrawTimers(data.Id, data.Elapsed));
-      //   .then((data) => RedrawTimers(data.Id, data.Elapsed, data.Running, data.OutOfOrder));
+        .then((data) => RedrawTimers(data.Id, data.Elapsed, data.Running, data.OutOfOrder));
     }
     await delay(1000);
   }
@@ -80,9 +92,14 @@ function FormatTime(seconds) {
   return time;
 }
 
-async function RedrawTimers(id, elapsed) {
+async function RedrawTimers(id, elapsed, running, outOfOrder) {
   let target = document.getElementById("timer" + id);
   target.innerHTML = FormatTime(elapsed);
+  console.log(running)
+  if (outOfOrder) {
+    target.innerHTML = `<span class="outOfOrderMessage">Out of Order</span>`
+  }
+
 }
 
 hotkeys("ctrl+shift+h", function (event, handler) {
