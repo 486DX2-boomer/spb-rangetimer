@@ -36,30 +36,13 @@ async function setReserved(buttonNumber) {
   fetch("http://localhost:8090/reserved/" + buttonNumber, { mode: "no-cors" });
 }
 
-
-// const timer1 = document.getElementById("timer1");
-// const timer2 = document.getElementById("timer2");
-// const timer3 = document.getElementById("timer3");
-// const timer4 = document.getElementById("timer4");
-// const timer5 = document.getElementById("timer5");
-// const timer6 = document.getElementById("timer6");
-// const timer7 = document.getElementById("timer7");
-// const timer8 = document.getElementById("timer8");
-// const timer9 = document.getElementById("timer9");
-// const timer10 = document.getElementById("timer10");
-// const timer11 = document.getElementById("timer11");
-// const timer12 = document.getElementById("timer12");
-// const timer13 = document.getElementById("timer13");
-// const timer14 = document.getElementById("timer14");
-// const timer15 = document.getElementById("timer15");
-// const timer16 = document.getElementById("timer16");
-// const timer17 = document.getElementById("timer17");
-// const timer18 = document.getElementById("timer18");
-// const timer19 = document.getElementById("timer19");
-// const timer20 = document.getElementById("timer20");
-
 function delay(time) {
   return new Promise((resolve) => setTimeout(resolve, time));
+}
+// Convert an integer to a string in the format 00:00:00 (eg 3600 to 01:00:00)
+function FormatTime(seconds) {
+  let time = new Date(1000 * seconds).toISOString().substr(11, 8);
+  return time;
 }
 
 let updateInit = false;
@@ -79,23 +62,28 @@ async function Update() {
       console.log("Fetching state");
       fetch("http://localhost:8090/getstate/" + i)
         .then((response) => response.json())
-        .then((data) => RedrawTimers(data.Id, data.Elapsed, data.Running, data.OutOfOrder));
+        .then((data) => RedrawTimers(data.Id, data.Elapsed, data.Member, data.Reserved, data.OutOfOrder));
+        // .then((data) => RedrawTimers(data.Id, data.Elapsed, data.Running, data.Member, data.OutOfOrder));
     }
     await delay(1000);
   }
 }
 window.addEventListener("load", Update);
 
-// Convert an integer to a string in the format 00:00:00 (eg 3600 to 01:00:00)
-function FormatTime(seconds) {
-  let time = new Date(1000 * seconds).toISOString().substr(11, 8);
-  return time;
-}
-
-async function RedrawTimers(id, elapsed, running, outOfOrder) {
+async function RedrawTimers(id, elapsed, member, reserved, outOfOrder) {
   let target = document.getElementById("timer" + id);
+  let tn = document.getElementById("tn" + id);
   target.innerHTML = FormatTime(elapsed);
-  console.log(running)
+  if (member) {
+    tn.innerHTML = (id + " - " + "Member")
+  } else if (!member) {
+    tn.innerHTML = (id)
+  }
+
+  if (reserved) {
+    target.innerHTML = "Reserved"
+  }
+
   if (outOfOrder) {
     target.innerHTML = `<span class="outOfOrderMessage">Out of Order</span>`
   }
