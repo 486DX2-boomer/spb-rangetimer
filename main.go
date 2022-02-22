@@ -143,7 +143,7 @@ func GetRunning(w http.ResponseWriter, r *http.Request) {
 func GetState(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json") // set header to JSON
-	w.Header().Set("Access-Control-Allow-Origin", "null")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 
 	var response bytes.Buffer
 

@@ -1,45 +1,47 @@
+const server = "http://208.113.129.131:8080"
+
 function refresh() {
-  let promise = fetch("http://localhost:8090/update/");
+  let promise = fetch(server + "/update/");
 }
 window.addEventListener("load", refresh); // call refresh on opening the timer
 
 async function startTimer(buttonNumber) {
-  fetch("http://localhost:8090/start/" + buttonNumber, { mode: "no-cors" });
+  fetch(server + "/start/" + buttonNumber, { mode: "no-cors" });
   console.log("Starting timer...");
 }
 
 async function stopTimer(buttonNumber) {
-  fetch("http://localhost:8090/stop/" + buttonNumber, { mode: "no-cors" });
+  fetch(server + "/stop/" + buttonNumber, { mode: "no-cors" });
   console.log("Stopping timer...");
 }
 
 async function clearTimer(buttonNumber) {
-  fetch("http://localhost:8090/clear/" + buttonNumber, { mode: "no-cors" });
+  fetch(server + "/clear/" + buttonNumber, { mode: "no-cors" });
   console.log("Stopping timer...");
 }
 
 async function getRunning(buttonNumber) {
-  fetch("http://localhost:8090/getrunning/" + buttonNumber)
+  fetch(server + "/getrunning/" + buttonNumber)
     .then((response) => response.json())
     .then((data) => console.log(data));
 }
 
 async function setOutOfOrder(buttonNumber) {
-  fetch("http://localhost:8090/outoforder/" + buttonNumber, {
+  fetch(server + "/outoforder/" + buttonNumber, {
     mode: "no-cors",
   });
 }
 
 async function setMember(buttonNumber) {
-  fetch("http://localhost:8090/member/" + buttonNumber, { mode: "no-cors" });
+  fetch(server + "/member/" + buttonNumber, { mode: "no-cors" });
 }
 
 async function setReserved(buttonNumber) {
-  fetch("http://localhost:8090/reserved/" + buttonNumber, { mode: "no-cors" });
+  fetch(server + "/reserved/" + buttonNumber, { mode: "no-cors" });
 }
 
 async function setTimer(buttonNumber, value) {
-  fetch("http://localhost:8090/settime/" + buttonNumber + "/" + value, {
+  fetch(server + "/settime/" + buttonNumber + "/" + value, {
     mode: "no-cors",
   });
 }
@@ -68,7 +70,7 @@ async function Update() {
   while (updateInit) {
 
     console.log("Fetching state");
-    fetch("http://localhost:8090/getstate/")
+    fetch(server + "/getstate/")
       .then((response) => response.json())
       .then((data) => {
         for (let i = 1; i < 21; i++) {
