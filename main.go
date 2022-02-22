@@ -39,6 +39,7 @@ func main() {
 	http.HandleFunc("/member/", SetMember)
 	http.HandleFunc("/reserved/", SetReserved)
 	http.HandleFunc("/outoforder/", SetOutOfOrder)
+	http.HandleFunc("/settime/", setTime)
 
 	log.Println("Starting server...")
 	err := http.ListenAndServe(":8090", nil)
@@ -188,4 +189,32 @@ func SetOutOfOrder(w http.ResponseWriter, r *http.Request) {
 	x, _ := strconv.Atoi(timerIndex)
 
 	t[x].SetOutOfOrder()
+}
+
+func setTime(w http.ResponseWriter, r *http.Request) {
+	// get timer
+	ti := fmt.Sprint(r.URL) // Write the r.URL to a string
+
+	timerIndex := strings.Split(ti, "/")[2]
+	x, _ := strconv.Atoi(timerIndex)
+
+	fmt.Println(timerIndex)
+
+	// get value to set timer to
+	valueStr := strings.Split(ti, "/")[3]
+	fmt.Println(valueStr)
+	y, err := strconv.Atoi(valueStr)
+	if err != nil {
+		fmt.Println("Error: Not an integer? ", err)
+		// fallback
+		y = 3600
+	}
+	// Validate the input
+	if (y*60 > 3600) || (y < 0) {
+		fmt.Println("Error: Time value must be between 0 and 3600 seconds")
+		// fallback
+		y = 3600
+	}
+
+	t[x].Elapsed = y * 60
 }

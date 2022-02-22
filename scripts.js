@@ -36,6 +36,10 @@ async function setReserved(buttonNumber) {
   fetch("http://localhost:8090/reserved/" + buttonNumber, { mode: "no-cors" });
 }
 
+async function setTimer(buttonNumber, value) {
+  fetch(("http://localhost:8090/settime/" + buttonNumber + "/" + value), { mode: "no-cors" });
+}
+
 function delay(time) {
   return new Promise((resolve) => setTimeout(resolve, time));
 }
