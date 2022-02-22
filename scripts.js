@@ -25,12 +25,13 @@ async function getRunning(buttonNumber) {
 }
 
 async function setOutOfOrder(buttonNumber) {
-  fetch("http://localhost:8090/outoforder/" + buttonNumber, { mode: "no-cors" });
+  fetch("http://localhost:8090/outoforder/" + buttonNumber, {
+    mode: "no-cors",
+  });
 }
 
 async function setMember(buttonNumber) {
   fetch("http://localhost:8090/member/" + buttonNumber, { mode: "no-cors" });
-
 }
 
 async function setReserved(buttonNumber) {
@@ -38,7 +39,9 @@ async function setReserved(buttonNumber) {
 }
 
 async function setTimer(buttonNumber, value) {
-  fetch(("http://localhost:8090/settime/" + buttonNumber + "/" + value), { mode: "no-cors" });
+  fetch("http://localhost:8090/settime/" + buttonNumber + "/" + value, {
+    mode: "no-cors",
+  });
 }
 
 function delay(time) {
@@ -63,39 +66,55 @@ async function Update() {
 
   console.log("Begin update");
   while (updateInit) {
-    for (let i = 1; i < 21; i++) {
-      console.log("Fetching state");
-      fetch("http://localhost:8090/getstate/" + i)
-        .then((response) => response.json())
-        .then((data) => RedrawTimers(data.Id, data.Elapsed, data.Member, data.Reserved, data.OutOfOrder, data.Expired));
-    }
+
+    console.log("Fetching state");
+    fetch("http://localhost:8090/getstate/")
+      .then((response) => response.json())
+      .then((data) => {
+        for (let i = 1; i < 21; i++) {
+          RedrawTimers(
+            data[i].Id,
+            data[i].Elapsed,
+            data[i].Member,
+            data[i].Reserved,
+            data[i].OutOfOrder,
+            data[i].Expired
+          );
+        }
+      });
     await delay(1000);
   }
 }
 window.addEventListener("load", Update);
 
-async function RedrawTimers(id, elapsed, member, reserved, outOfOrder, expired) {
+async function RedrawTimers(
+  id,
+  elapsed,
+  member,
+  reserved,
+  outOfOrder,
+  expired
+) {
   let target = document.getElementById("timer" + id);
   let tn = document.getElementById("tn" + id);
   target.innerHTML = FormatTime(elapsed);
   if (member) {
-    tn.innerHTML = (id + " - " + "Member")
+    tn.innerHTML = id + " - " + "Member";
   } else if (!member) {
-    tn.innerHTML = (id)
+    tn.innerHTML = id;
   }
 
   if (reserved) {
-    target.innerHTML = "Reserved"
+    target.innerHTML = "Reserved";
   }
 
   if (outOfOrder) {
-    target.innerHTML = `<span class="outOfOrderMessage">Out of Order</span>`
+    target.innerHTML = `<span class="outOfOrderMessage">Out of Order</span>`;
   }
 
   if (expired) {
-    target.innerHTML = `<span class="expiredMessage">00:00:00</span>`
+    target.innerHTML = `<span class="expiredMessage">00:00:00</span>`;
   }
-
 }
 
 hotkeys("ctrl+shift+h", function (event, handler) {
@@ -117,17 +136,15 @@ function hideButtons() {
     for (i = 0; i < p.length; i++) {
       p[i].style.display = "none";
     }
-    
+
     console.log("Buttons hidden");
     buttonsHidden = true;
-    
   } else if (buttonsHidden == true) {
     for (i = 0; i < p.length; i++) {
       p[i].style.display = "block";
     }
-    
+
     console.log("Buttons visible");
     buttonsHidden = false;
-
   }
 }

@@ -139,28 +139,20 @@ func GetRunning(w http.ResponseWriter, r *http.Request) {
 	w.Write(jsonResponse)
 }
 
+// GetState sends the state of every timer in []t as JSON.
 func GetState(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json") // set header to JSON
 	w.Header().Set("Access-Control-Allow-Origin", "null")
 
-	ti := fmt.Sprint(r.URL) // Write the r.URL to a string
-	timerIndex := strings.Split(ti, "/getstate/")[1]
-	index, _ := strconv.Atoi(timerIndex)
-
 	var response bytes.Buffer
 
-	state, err := json.Marshal(t[index])
+	state, err := json.Marshal(t)
 	if err != nil {
 		log.Fatal("JSON marshalling error: ", err)
 	}
 	response.Write(state)
-	// fmt.Println(response.String())
 	w.Write(response.Bytes())
-	// Reset only needed because I was trying to send everything in one JSON with a loop
-	// I want to refactor this so I send one request and get the state of all 20 timers with one request
-	// Instead of sending 20 requests every second
-	// But I don't know how
 	response.Reset()
 }
 
@@ -198,11 +190,8 @@ func setTime(w http.ResponseWriter, r *http.Request) {
 	timerIndex := strings.Split(ti, "/")[2]
 	x, _ := strconv.Atoi(timerIndex)
 
-	fmt.Println(timerIndex)
-
 	// get value to set timer to
 	valueStr := strings.Split(ti, "/")[3]
-	fmt.Println(valueStr)
 	y, err := strconv.Atoi(valueStr)
 	if err != nil {
 		fmt.Println("Error: Not an integer? ", err)

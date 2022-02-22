@@ -8,8 +8,9 @@ CTRL + Shift + H to hide the control buttons. This is intended to be used for th
 
 - [ ] ~~Start~~, ~~Stop~~, ~~Clear Timer~~, ~~Half Hour~~, ~~Hour~~, Custom Time Interval (Hour, half hour, or arbitrary time), ~~Reserved for Member~~, ~~Out of Order~~
 - [x] Add expiration behavior to timers (timers should stay at 0:00 and clear manually instead of auto clearing)
-- [ ] Refactor this so I send one request and get the state of all 20 timers with one request instead of sending 20 requests every second (But I couldn't figure out how)
-  - [ ] OK so it turns out json.Marshal() will already jsonize an array without having to write a special method for it. (Not just single structs.) so I can just json.Marshal(t) and send that to the frontend
+- [x] Refactor this so I send one request and get the state of all 20 timers with one request instead of sending 20 requests every second (But I couldn't figure out how)
+  - [x] OK so it turns out json.Marshal() will already jsonize an array without having to write a special method for it. (Not just single structs.) so I can just json.Marshal(t) and send that to the frontend
+  - [x] Done. It was way easier than expected
 - [ ] Get timer index from GET request logic (`timerIndex := strings.Split(ti, "/start/")[1]`) rewritten into a generic
 - [ ] Toggling timer flags (reserved, member, out of order) are currently all separate functions, rewrite into a generic
 - [x] All of the front end work (has to look good because customers will see it)
