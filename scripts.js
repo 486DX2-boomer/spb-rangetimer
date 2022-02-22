@@ -1,4 +1,4 @@
-const server = "http://208.113.129.131:8080"
+const server = "http://208.113.129.131:8090"
 
 function refresh() {
   let promise = fetch(server + "/update/");
