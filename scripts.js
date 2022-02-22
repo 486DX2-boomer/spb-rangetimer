@@ -23,6 +23,7 @@ async function getRunning(buttonNumber) {
     .then((response) => response.json())
     .then((data) => console.log(data));
 }
+
 async function setOutOfOrder(buttonNumber) {
   fetch("http://localhost:8090/outoforder/" + buttonNumber, { mode: "no-cors" });
 }
