@@ -1,3 +1,4 @@
+// const server = "http://127.0.0.1:8090"
 const server = "http://208.113.129.131:8090"
 
 function refresh() {
@@ -5,42 +6,42 @@ function refresh() {
 }
 window.addEventListener("load", refresh); // call refresh on opening the timer
 
-async function startTimer(buttonNumber) {
+function startTimer(buttonNumber) {
   fetch(server + "/start/" + buttonNumber, { mode: "no-cors" });
   console.log("Starting timer...");
 }
 
-async function stopTimer(buttonNumber) {
+function stopTimer(buttonNumber) {
   fetch(server + "/stop/" + buttonNumber, { mode: "no-cors" });
   console.log("Stopping timer...");
 }
 
-async function clearTimer(buttonNumber) {
+function clearTimer(buttonNumber) {
   fetch(server + "/clear/" + buttonNumber, { mode: "no-cors" });
   console.log("Stopping timer...");
 }
 
-async function getRunning(buttonNumber) {
+function getRunning(buttonNumber) {
   fetch(server + "/getrunning/" + buttonNumber)
     .then((response) => response.json())
     .then((data) => console.log(data));
 }
 
-async function setOutOfOrder(buttonNumber) {
+function setOutOfOrder(buttonNumber) {
   fetch(server + "/outoforder/" + buttonNumber, {
     mode: "no-cors",
   });
 }
 
-async function setMember(buttonNumber) {
+function setMember(buttonNumber) {
   fetch(server + "/member/" + buttonNumber, { mode: "no-cors" });
 }
 
-async function setReserved(buttonNumber) {
+function setReserved(buttonNumber) {
   fetch(server + "/reserved/" + buttonNumber, { mode: "no-cors" });
 }
 
-async function setTimer(buttonNumber, value) {
+function setTimer(buttonNumber, value) {
   fetch(server + "/settime/" + buttonNumber + "/" + value, {
     mode: "no-cors",
   });
@@ -89,7 +90,7 @@ async function Update() {
 }
 window.addEventListener("load", Update);
 
-async function RedrawTimers(
+function RedrawTimers(
   id,
   elapsed,
   member,
