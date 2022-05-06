@@ -16,61 +16,21 @@ CTRL + Shift + H to hide the control buttons. This is intended to be used for th
 - [x] All of the front end work (has to look good because customers will see it)
 - [x] Figure out how to call Refresh() without typing the URL in (lol)
 - [x] Front end fetch the timers from the server and display them in DOM
-  - [x] Do not know how to refresh this every second- a fetch request every second? Sounds expensive
 - [x] Convert integer to time (3600 seconds == 1 hour on screen)
 - [x] Hide Timer Buttons (For range use, so savvy customers don't reset their own timers)
+- [ ] 2 minute grace period for shooters coming onto the range (3720 seconds instead of 3600)
 
 ## Code Snippets
 
 *Format seconds as an integer value into a stopwatch value*
-
-I like this answer. It can be even shorter: 
 ```
 new Date(1000 * seconds).toISOString().substr(11, 8)
 ```
+## Issues
 
-## References
-
-https://code-boxx.com/simple-javascript-stopwatch/
-
-https://jsfiddle.net/dalinhuang/op8ae79j/#:~:text=multiple%20stop%20watch%20-%20JSFiddle%20-%20Code%20Playground,2%20var%20Stopwatch%20%3D%20function%28elem%2C%20options%29%20%7B%203
-
-https://stackoverflow.com/questions/22796620/multiple-countdown-timers-on-one-page
-
-https://javascript.info/fetch
-
-https://javascript.info/promise-api
-
-https://www.educba.com/javascript-button/ 
-
-No, I don't know how to make Javascript buttons off the top of my head. Javascript is a bad and I avoid learning it at ALL COSTS.
-
-https://tutorialedge.net/golang/creating-simple-web-server-with-golang/
-
-https://stackoverflow.com/questions/64032097/can-i-get-a-fetch-function-to-repeat-every-few-seconds
-
-https://stackoverflow.com/questions/34842526/update-console-without-flickering-c
-
-https://cssbuttons.io
-
-https://css.gg
-
-https://code-boxx.com/simple-javascript-stopwatch/
-
-https://golangbyexample.com/json-response-body-http-go/
-
-https://www.flaticon.com/
-
-https://stackoverflow.com/questions/6312993/javascript-seconds-to-time-string-with-format-hhmmss
-
-https://www.sitepoint.com/css-sizing-absolute-position/
-
-https://css-tricks.com/content-jumping-avoid/
-
-https://itnext.io/how-to-stop-content-jumping-when-images-load-7c915e47f576
-
-https://frontendresource.com/css-cards/
-
-https://code-boxx.com/shortcut-keys-javascript/
-
-https://wangchujiang.com/hotkeys/
+- UI: Laggy feel. This is because the backend ticks only once per second in addition to the 
+browser fetching once per second. Because of that, activating a button can take up to one second which makes the UI feel slow.
+- Backend is written in Golang (my personal preference) instead of a more common language.
+- The timers are not written as a reusable component.
+- No user authentication.
+- Not really set up for multiple deployments (server endpoint is stored in a constant instead of an environment variable or config file.
