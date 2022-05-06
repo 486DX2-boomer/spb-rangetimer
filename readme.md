@@ -26,11 +26,13 @@ CTRL + Shift + H to hide the control buttons. This is intended to be used for th
 ```
 new Date(1000 * seconds).toISOString().substr(11, 8)
 ```
+
 ## Issues
 
 - UI: Laggy feel. This is because the backend ticks only once per second in addition to the 
-browser fetching once per second. Because of that, activating a button can take up to one second which makes the UI feel slow.
-- Backend is written in Golang (my personal preference) instead of a more common language.
+browser fetching once per second. Because of that, activating a button can take up to one second which makes the UI feel slow. There's no way to force an "instant" update of the UI as written.
+- Backend is written in Go instead of a more common language.
 - The timers are not written as a reusable component.
 - No user authentication.
-- Not really set up for multiple deployments (server endpoint is stored in a constant instead of an environment variable or config file.
+- Not really set up for multiple deployments (server endpoint is stored in a constant instead of an environment variable or config file.)
+- Some functions could be rewritten into generics.
