@@ -1,4 +1,4 @@
-const server = "https://shrouded-harbor-01171.herokuapp.com:8080"
+const server = "https://shrouded-harbor-01171.herokuapp.com"
 
 function refresh() {
   let promise = fetch(server + "/update/");
