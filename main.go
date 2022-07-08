@@ -42,7 +42,7 @@ func main() {
 	http.HandleFunc("/settime/", setTime)
 
 	log.Println("Starting server...")
-	err := http.ListenAndServe(":8090", nil)
+	err := http.ListenAndServe(c.Port, nil)
 	if err != nil {
 		log.Fatal(err)
 	}

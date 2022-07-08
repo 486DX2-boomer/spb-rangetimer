@@ -1,5 +1,4 @@
-// const server = "http://127.0.0.1:8090"
-const server = "http://208.113.129.131:8090"
+const server = "https://shrouded-harbor-01171.herokuapp.com:8080"
 
 function refresh() {
   let promise = fetch(server + "/update/");
