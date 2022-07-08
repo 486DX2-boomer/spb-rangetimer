@@ -1,3 +1,8 @@
+# Portfolio Demo
+This branch `portfolio-demo` has been configured to act as a demo on Heroku.
+
+Because Heroku restarts its dyno periodically and does not maintain state, the heroku version is for demo purposes only and should not be used in production.
+
 # SPB Range Timer
 
 An array of server-side stopwatches for shooting range use.
