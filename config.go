@@ -10,6 +10,6 @@ type Config struct {
 }
 
 func (c *Config) Load() {
-	c.Port = os.Getenv("PORT")
+	c.Port = (":" + os.Getenv("PORT"))
 	fmt.Println("Config load")
 }
