@@ -1,12 +1,15 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 type Config struct {
 	Port string
 }
 
 func (c *Config) Load() {
-	c.Port = ":8080"
+	c.Port = os.Getenv("PORT")
 	fmt.Println("Config load")
 }
