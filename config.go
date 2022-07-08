@@ -7,6 +7,6 @@ type Config struct {
 }
 
 func (c Config) Load() {
-	c.Port = ":8090"
+	c.Port = ":8080"
 	fmt.Println("Config load")
 }
