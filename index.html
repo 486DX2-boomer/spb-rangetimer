@@ -1,359 +1,524 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SPB Range Timer</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="master-container">
-      <div class="timer-container">
-        <div class="timer-number" id="tn1">1</div>
-        <div class="timer" id="timer1">00:00:00</div>
-        <div class="button-container">
-          <button onclick="startTimer('1')">▶</button>
-          <button onclick="setTimer('1', '30')">30</button>
-          <button onclick="setTimer('1', '60')">60</button>
-          <button onclick="stopTimer('1')">
-            <img src="assets/pause-icon.svg" width="8" />
-          </button>
-          <button onclick="clearTimer('1')">⯀</button>
-          <button onclick="setOutOfOrder('1')">❌</button>
-          <button onclick="setMember('1')"><img src="assets/member-icon.svg" width="24" /></button>
-          <button onclick="setReserved('1')"><img src="assets/reserved-icon.svg" width="24" /></button>
-        </div>
-      </div>
 
-      <div class="timer-container">
-        <div class="timer-number" id="tn2">2</div>
-        <div class="timer" id="timer2">00:00:00</div>
-        <div class="button-container">
-          <button onclick="startTimer('2')">▶</button>
-          <button onclick="setTimer('2', '30')">30</button>
-          <button onclick="setTimer('2', '60')">60</button>
-          <button onclick="stopTimer('2')">
-            <img src="assets/pause-icon.svg" width="8" />
-          </button>
-          <button onclick="clearTimer('2')">⯀</button>
-          <button onclick="setOutOfOrder('2')">❌</button>
-          <button onclick="setMember('2')"><img src="assets/member-icon.svg" width="24" /></button>
-          <button onclick="setReserved('2')"><img src="assets/reserved-icon.svg" width="24" /></button>
-        </div>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SPB Range Timer</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
 
-      <div class="timer-container">
-        <div class="timer-number" id="tn3">3</div>
-        <div class="timer" id="timer3">00:00:00</div>
-        <div class="button-container">
-          <button onclick="startTimer('3')">▶</button>
-          <button onclick="setTimer('3', '30')">30</button>
-          <button onclick="setTimer('3', '60')">60</button>
-          <button onclick="stopTimer('3')">
-            <img src="assets/pause-icon.svg" width="8" />
-          </button>
-          <button onclick="clearTimer('3')">⯀</button>
-          <button onclick="setOutOfOrder('3')">❌</button>
-          <button onclick="setMember('3')"><img src="assets/member-icon.svg" width="24" /></button>
-          <button onclick="setReserved('3')"><img src="assets/reserved-icon.svg" width="24" /></button>
-        </div>
+<body>
+  <div class="master-container">
+    <div class="timer-container">
+      <div class="timer-number" id="tn1">1</div>
+      <div class="timer" id="timer1">00:00:00</div>
+      <div class="button-container">
+        <button onclick="startTimer('1')">▶</button>
+        <button onclick="setTimer('1', '30')">30</button>
+        <button onclick="setTimer('1', '60')">60</button>
+        <button onclick="stopTimer('1')">
+          <img src="/static/assets/pause-icon.svg" width="8" />
+        </button>
+        <button onclick="clearTimer('1')">⯀</button>
+        <button onclick="setOutOfOrder('1')">❌</button>
+        <button onclick="setMember('1')"><img src="/static/assets/member-icon.svg" width="24" /></button>
+        <button onclick="setReserved('1')"><img src="/static/assets/reserved-icon.svg" width="24" /></button>
       </div>
+    </div>
 
-      <div class="timer-container">
-        <div class="timer-number" id="tn4">4</div>
-        <div class="timer" id="timer4">00:00:00</div>
-        <div class="button-container">
-          <button onclick="startTimer('4')">▶</button>
-          <button onclick="setTimer('4', '30')">30</button>
-          <button onclick="setTimer('4', '60')">60</button>
-          <button onclick="stopTimer('4')">
-            <img src="assets/pause-icon.svg" width="8" />
-          </button>
-          <button onclick="clearTimer('4')">⯀</button>
-          <button onclick="setOutOfOrder('4')">❌</button>
-          <button onclick="setMember('4')"><img src="assets/member-icon.svg" width="24" /></button>
-          <button onclick="setReserved('4')"><img src="assets/reserved-icon.svg" width="24" /></button>
-        </div>
+    <div class="timer-container">
+      <div class="timer-number" id="tn2">2</div>
+      <div class="timer" id="timer2">00:00:00</div>
+      <div class="button-container">
+        <button onclick="startTimer('2')">▶</button>
+        <button onclick="setTimer('2', '30')">30</button>
+        <button onclick="setTimer('2', '60')">60</button>
+        <button onclick="stopTimer('2')">
+          <img src="/static/assets/pause-icon.svg" width="8" />
+        </button>
+        <button onclick="clearTimer('2')">⯀</button>
+        <button onclick="setOutOfOrder('2')">❌</button>
+        <button onclick="setMember('2')"><img src="/static/assets/member-icon.svg" width="24" /></button>
+        <button onclick="setReserved('2')"><img src="/static/assets/reserved-icon.svg" width="24" /></button>
       </div>
+    </div>
 
-      <div class="timer-container">
-        <div class="timer-number" id="tn5">5</div>
-        <div class="timer" id="timer5">00:00:00</div>
-        <div class="button-container">
-          <button onclick="startTimer('5')">▶</button>
-          <button onclick="setTimer('5', '30')">30</button>
-          <button onclick="setTimer('5', '60')">60</button>
-          <button onclick="stopTimer('5')">
-            <img src="assets/pause-icon.svg" width="8" />
-          </button>
-          <button onclick="clearTimer('5')">⯀</button>
-          <button onclick="setOutOfOrder('5')">❌</button>
-          <button onclick="setMember('5')"><img src="assets/member-icon.svg" width="24" /></button>
-          <button onclick="setReserved('5')"><img src="assets/reserved-icon.svg" width="24" /></button>
-        </div>
+    <div class="timer-container">
+      <div class="timer-number" id="tn3">3</div>
+      <div class="timer" id="timer3">00:00:00</div>
+      <div class="button-container">
+        <button onclick="startTimer('3')">▶</button>
+        <button onclick="setTimer('3', '30')">30</button>
+        <button onclick="setTimer('3', '60')">60</button>
+        <button onclick="stopTimer('3')">
+          <img src="/static/assets/pause-icon.svg" width="8" />
+        </button>
+        <button onclick="clearTimer('3')">⯀</button>
+        <button onclick="setOutOfOrder('3')">❌</button>
+        <button onclick="setMember('3')"><img src="/static/assets/member-icon.svg" width="24" /></button>
+        <button onclick="setReserved('3')"><img src="/static/assets/reserved-icon.svg" width="24" /></button>
       </div>
+    </div>
 
-      <div class="timer-container">
-        <div class="timer-number" id="tn6">6</div>
-        <div class="timer" id="timer6">00:00:00</div>
-        <div class="button-container">
-          <button onclick="startTimer('6')">▶</button>
-          <button onclick="setTimer('6', '30')">30</button>
-          <button onclick="setTimer('6', '60')">60</button>
-          <button onclick="stopTimer('6')">
-            <img src="assets/pause-icon.svg" width="8" />
-          </button>
-          <button onclick="clearTimer('6')">⯀</button>
-          <button onclick="setOutOfOrder('6')">❌</button>
-          <button onclick="setMember('6')"><img src="assets/member-icon.svg" width="24" /></button>
-          <button onclick="setReserved('6')"><img src="assets/reserved-icon.svg" width="24" /></button>
-        </div>
+    <div class="timer-container">
+      <div class="timer-number" id="tn4">4</div>
+      <div class="timer" id="timer4">00:00:00</div>
+      <div class="button-container">
+        <button onclick="startTimer('4')">▶</button>
+        <button onclick="setTimer('4', '30')">30</button>
+        <button onclick="setTimer('4', '60')">60</button>
+        <button onclick="stopTimer('4')">
+          <img src="/static/assets/pause-icon.svg" width="8" />
+        </button>
+        <button onclick="clearTimer('4')">⯀</button>
+        <button onclick="setOutOfOrder('4')">❌</button>
+        <button onclick="setMember('4')"><img src="/static/assets/member-icon.svg" width="24" /></button>
+        <button onclick="setReserved('4')"><img src="/static/assets/reserved-icon.svg" width="24" /></button>
       </div>
+    </div>
 
-      <div class="timer-container">
-        <div class="timer-number" id="tn7">7</div>
-        <div class="timer" id="timer7">00:00:00</div>
-        <div class="button-container">
-          <button onclick="startTimer('7')">▶</button>
-          <button onclick="setTimer('7', '30')">30</button>
-          <button onclick="setTimer('7', '60')">60</button>
-          <button onclick="stopTimer('7')">
-            <img src="assets/pause-icon.svg" width="8" />
-          </button>
-          <button onclick="clearTimer('7')">⯀</button>
-          <button onclick="setOutOfOrder('7')">❌</button>
-          <button onclick="setMember('7')"><img src="assets/member-icon.svg" width="24" /></button>
-          <button onclick="setReserved('7')"><img src="assets/reserved-icon.svg" width="24" /></button>
-        </div>
+    <div class="timer-container">
+      <div class="timer-number" id="tn5">5</div>
+      <div class="timer" id="timer5">00:00:00</div>
+      <div class="button-container">
+        <button onclick="startTimer('5')">▶</button>
+        <button onclick="setTimer('5', '30')">30</button>
+        <button onclick="setTimer('5', '60')">60</button>
+        <button onclick="stopTimer('5')">
+          <img src="/static/assets/pause-icon.svg" width="8" />
+        </button>
+        <button onclick="clearTimer('5')">⯀</button>
+        <button onclick="setOutOfOrder('5')">❌</button>
+        <button onclick="setMember('5')"><img src="/static/assets/member-icon.svg" width="24" /></button>
+        <button onclick="setReserved('5')"><img src="/static/assets/reserved-icon.svg" width="24" /></button>
       </div>
+    </div>
 
-      <div class="timer-container">
-        <div class="timer-number" id="tn8">8</div>
-        <div class="timer" id="timer8">00:00:00</div>
-        <div class="button-container">
-          <button onclick="startTimer('8')">▶</button>
-          <button onclick="setTimer('8', '30')">30</button>
-          <button onclick="setTimer('8', '60')">60</button>
-          <button onclick="stopTimer('8')">
-            <img src="assets/pause-icon.svg" width="8" />
-          </button>
-          <button onclick="clearTimer('8')">⯀</button>
-          <button onclick="setOutOfOrder('8')">❌</button>
-          <button onclick="setMember('8')"><img src="assets/member-icon.svg" width="24" /></button>
-          <button onclick="setReserved('8')"><img src="assets/reserved-icon.svg" width="24" /></button>
-        </div>
+    <div class="timer-container">
+      <div class="timer-number" id="tn6">6</div>
+      <div class="timer" id="timer6">00:00:00</div>
+      <div class="button-container">
+        <button onclick="startTimer('6')">▶</button>
+        <button onclick="setTimer('6', '30')">30</button>
+        <button onclick="setTimer('6', '60')">60</button>
+        <button onclick="stopTimer('6')">
+          <img src="/static/assets/pause-icon.svg" width="8" />
+        </button>
+        <button onclick="clearTimer('6')">⯀</button>
+        <button onclick="setOutOfOrder('6')">❌</button>
+        <button onclick="setMember('6')"><img src="/static/assets/member-icon.svg" width="24" /></button>
+        <button onclick="setReserved('6')"><img src="/static/assets/reserved-icon.svg" width="24" /></button>
       </div>
+    </div>
 
-      <div class="timer-container">
-        <div class="timer-number" id="tn9">9</div>
-        <div class="timer" id="timer9">00:00:00</div>
-        <div class="button-container">
-          <button onclick="startTimer('9')">▶</button>
-          <button onclick="setTimer('9', '30')">30</button>
-          <button onclick="setTimer('9', '60')">60</button>
-          <button onclick="stopTimer('9')">
-            <img src="assets/pause-icon.svg" width="8" />
-          </button>
-          <button onclick="clearTimer('9')">⯀</button>
-          <button onclick="setOutOfOrder('9')">❌</button>
-          <button onclick="setMember('9')"><img src="assets/member-icon.svg" width="24" /></button>
-          <button onclick="setReserved('9')"><img src="assets/reserved-icon.svg" width="24" /></button>
-        </div>
+    <div class="timer-container">
+      <div class="timer-number" id="tn7">7</div>
+      <div class="timer" id="timer7">00:00:00</div>
+      <div class="button-container">
+        <button onclick="startTimer('7')">▶</button>
+        <button onclick="setTimer('7', '30')">30</button>
+        <button onclick="setTimer('7', '60')">60</button>
+        <button onclick="stopTimer('7')">
+          <img src="/static/assets/pause-icon.svg" width="8" />
+        </button>
+        <button onclick="clearTimer('7')">⯀</button>
+        <button onclick="setOutOfOrder('7')">❌</button>
+        <button onclick="setMember('7')"><img src="/static/assets/member-icon.svg" width="24" /></button>
+        <button onclick="setReserved('7')"><img src="/static/assets/reserved-icon.svg" width="24" /></button>
       </div>
+    </div>
 
-      <div class="timer-container">
-        <div class="timer-number" id="tn10">10</div>
-        <div class="timer" id="timer10">00:00:00</div>
-        <div class="button-container">
-          <button onclick="startTimer('10')">▶</button>
-          <button onclick="setTimer('10', '30')">30</button>
-          <button onclick="setTimer('10', '60')">60</button>
-          <button onclick="stopTimer('10')">
-            <img src="assets/pause-icon.svg" width="8" />
-          </button>
-          <button onclick="clearTimer('10')">⯀</button>
-          <button onclick="setOutOfOrder('10')">❌</button>
-          <button onclick="setMember('10')"><img src="assets/member-icon.svg" width="24" /></button>
-          <button onclick="setReserved('10')"><img src="assets/reserved-icon.svg" width="24" /></button>
-        </div>
+    <div class="timer-container">
+      <div class="timer-number" id="tn8">8</div>
+      <div class="timer" id="timer8">00:00:00</div>
+      <div class="button-container">
+        <button onclick="startTimer('8')">▶</button>
+        <button onclick="setTimer('8', '30')">30</button>
+        <button onclick="setTimer('8', '60')">60</button>
+        <button onclick="stopTimer('8')">
+          <img src="/static/assets/pause-icon.svg" width="8" />
+        </button>
+        <button onclick="clearTimer('8')">⯀</button>
+        <button onclick="setOutOfOrder('8')">❌</button>
+        <button onclick="setMember('8')"><img src="/static/assets/member-icon.svg" width="24" /></button>
+        <button onclick="setReserved('8')"><img src="/static/assets/reserved-icon.svg" width="24" /></button>
       </div>
+    </div>
 
-      <div class="timer-container">
-        <div class="timer-number" id="tn11">11</div>
-        <div class="timer" id="timer11">00:00:00</div>
-        <div class="button-container">
-          <button onclick="startTimer('11')">▶</button>
-          <button onclick="setTimer('11', '30')">30</button>
-          <button onclick="setTimer('11', '60')">60</button>
-          <button onclick="stopTimer('11')">
-            <img src="assets/pause-icon.svg" width="8" />
-          </button>
-          <button onclick="clearTimer('11')">⯀</button>
-          <button onclick="setOutOfOrder('11')">❌</button>
-          <button onclick="setMember('11')"><img src="assets/member-icon.svg" width="24" /></button>
-          <button onclick="setReserved('11')"><img src="assets/reserved-icon.svg" width="24" /></button>
-        </div>
+    <div class="timer-container">
+      <div class="timer-number" id="tn9">9</div>
+      <div class="timer" id="timer9">00:00:00</div>
+      <div class="button-container">
+        <button onclick="startTimer('9')">▶</button>
+        <button onclick="setTimer('9', '30')">30</button>
+        <button onclick="setTimer('9', '60')">60</button>
+        <button onclick="stopTimer('9')">
+          <img src="/static/assets/pause-icon.svg" width="8" />
+        </button>
+        <button onclick="clearTimer('9')">⯀</button>
+        <button onclick="setOutOfOrder('9')">❌</button>
+        <button onclick="setMember('9')"><img src="/static/assets/member-icon.svg" width="24" /></button>
+        <button onclick="setReserved('9')"><img src="/static/assets/reserved-icon.svg" width="24" /></button>
       </div>
+    </div>
 
-      <div class="timer-container">
-        <div class="timer-number" id="tn12">12</div>
-        <div class="timer" id="timer12">00:00:00</div>
-        <div class="button-container">
-          <button onclick="startTimer('12')">▶</button>
-          <button onclick="setTimer('12', '30')">30</button>
-          <button onclick="setTimer('12', '60')">60</button>
-          <button onclick="stopTimer('12')">
-            <img src="assets/pause-icon.svg" width="8" />
-          </button>
-          <button onclick="clearTimer('12')">⯀</button>
-          <button onclick="setOutOfOrder('12')">❌</button>
-          <button onclick="setMember('12')"><img src="assets/member-icon.svg" width="24" /></button>
-          <button onclick="setReserved('12')"><img src="assets/reserved-icon.svg" width="24" /></button>
-        </div>
+    <div class="timer-container">
+      <div class="timer-number" id="tn10">10</div>
+      <div class="timer" id="timer10">00:00:00</div>
+      <div class="button-container">
+        <button onclick="startTimer('10')">▶</button>
+        <button onclick="setTimer('10', '30')">30</button>
+        <button onclick="setTimer('10', '60')">60</button>
+        <button onclick="stopTimer('10')">
+          <img src="/static/assets/pause-icon.svg" width="8" />
+        </button>
+        <button onclick="clearTimer('10')">⯀</button>
+        <button onclick="setOutOfOrder('10')">❌</button>
+        <button onclick="setMember('10')"><img src="/static/assets/member-icon.svg" width="24" /></button>
+        <button onclick="setReserved('10')"><img src="/static/assets/reserved-icon.svg" width="24" /></button>
       </div>
+    </div>
 
-      <div class="timer-container">
-        <div class="timer-number" id="tn13">13</div>
-        <div class="timer" id="timer13">00:00:00</div>
-        <div class="button-container">
-          <button onclick="startTimer('13')">▶</button>
-          <button onclick="setTimer('13', '30')">30</button>
-          <button onclick="setTimer('13', '60')">60</button>
-          <button onclick="stopTimer('13')">
-            <img src="assets/pause-icon.svg" width="8" />
-          </button>
-          <button onclick="clearTimer('13')">⯀</button>
-          <button onclick="setOutOfOrder('13')">❌</button>
-          <button onclick="setMember('13')"><img src="assets/member-icon.svg" width="24" /></button>
-          <button onclick="setReserved('13')"><img src="assets/reserved-icon.svg" width="24" /></button>
-        </div>
+    <div class="timer-container">
+      <div class="timer-number" id="tn11">11</div>
+      <div class="timer" id="timer11">00:00:00</div>
+      <div class="button-container">
+        <button onclick="startTimer('11')">▶</button>
+        <button onclick="setTimer('11', '30')">30</button>
+        <button onclick="setTimer('11', '60')">60</button>
+        <button onclick="stopTimer('11')">
+          <img src="/static/assets/pause-icon.svg" width="8" />
+        </button>
+        <button onclick="clearTimer('11')">⯀</button>
+        <button onclick="setOutOfOrder('11')">❌</button>
+        <button onclick="setMember('11')"><img src="assets/member-icon.svg" width="24" /></button>
+        <button onclick="setReserved('11')"><img src="assets/reserved-icon.svg" width="24" /></button>
       </div>
+    </div>
 
-      <div class="timer-container">
-        <div class="timer-number" id="tn14">14</div>
-        <div class="timer" id="timer14">00:00:00</div>
-        <div class="button-container">
-          <button onclick="startTimer('14')">▶</button>
-          <button onclick="setTimer('14', '30')">30</button>
-          <button onclick="setTimer('14', '60')">60</button>
-          <button onclick="stopTimer('14')">
-            <img src="assets/pause-icon.svg" width="8" />
-          </button>
-          <button onclick="clearTimer('14')">⯀</button>
-          <button onclick="setOutOfOrder('14')">❌</button>
-          <button onclick="setMember('14')"><img src="assets/member-icon.svg" width="24" /></button>
-          <button onclick="setReserved('14')"><img src="assets/reserved-icon.svg" width="24" /></button>
-        </div>
+    <div class="timer-container">
+      <div class="timer-number" id="tn12">12</div>
+      <div class="timer" id="timer12">00:00:00</div>
+      <div class="button-container">
+        <button onclick="startTimer('12')">▶</button>
+        <button onclick="setTimer('12', '30')">30</button>
+        <button onclick="setTimer('12', '60')">60</button>
+        <button onclick="stopTimer('12')">
+          <img src="/static/assets/pause-icon.svg" width="8" />
+        </button>
+        <button onclick="clearTimer('12')">⯀</button>
+        <button onclick="setOutOfOrder('12')">❌</button>
+        <button onclick="setMember('12')"><img src="/static/assets/member-icon.svg" width="24" /></button>
+        <button onclick="setReserved('12')"><img src="/static/assets/reserved-icon.svg" width="24" /></button>
       </div>
+    </div>
 
-      <div class="timer-container">
-        <div class="timer-number" id="tn15">15</div>
-        <div class="timer" id="timer15">00:00:00</div>
-        <div class="button-container">
-          <button onclick="startTimer('15')">▶</button>
-          <button onclick="setTimer('15', '30')">30</button>
-          <button onclick="setTimer('15', '60')">60</button>
-          <button onclick="stopTimer('15')">
-            <img src="assets/pause-icon.svg" width="8" />
-          </button>
-          <button onclick="clearTimer('15')">⯀</button>
-          <button onclick="setOutOfOrder('15')">❌</button>
-          <button onclick="setMember('15')"><img src="assets/member-icon.svg" width="24" /></button>
-          <button onclick="setReserved('15')"><img src="assets/reserved-icon.svg" width="24" /></button>
-        </div>
+    <div class="timer-container">
+      <div class="timer-number" id="tn13">13</div>
+      <div class="timer" id="timer13">00:00:00</div>
+      <div class="button-container">
+        <button onclick="startTimer('13')">▶</button>
+        <button onclick="setTimer('13', '30')">30</button>
+        <button onclick="setTimer('13', '60')">60</button>
+        <button onclick="stopTimer('13')">
+          <img src="/static/assets/pause-icon.svg" width="8" />
+        </button>
+        <button onclick="clearTimer('13')">⯀</button>
+        <button onclick="setOutOfOrder('13')">❌</button>
+        <button onclick="setMember('13')"><img src="/static/assets/member-icon.svg" width="24" /></button>
+        <button onclick="setReserved('13')"><img src="/static/assets/reserved-icon.svg" width="24" /></button>
       </div>
+    </div>
 
-      <div class="timer-container">
-        <div class="timer-number" id="tn16">16</div>
-        <div class="timer" id="timer16">00:00:00</div>
-        <div class="button-container">
-          <button onclick="startTimer('16')">▶</button>
-          <button onclick="setTimer('16', '30')">30</button>
-          <button onclick="setTimer('16', '60')">60</button>
-          <button onclick="stopTimer('16')">
-            <img src="assets/pause-icon.svg" width="8" />
-          </button>
-          <button onclick="clearTimer('16')">⯀</button>
-          <button onclick="setOutOfOrder('16')">❌</button>
-          <button onclick="setMember('16')"><img src="assets/member-icon.svg" width="24" /></button>
-          <button onclick="setReserved('16')"><img src="assets/reserved-icon.svg" width="24" /></button>
-        </div>
+    <div class="timer-container">
+      <div class="timer-number" id="tn14">14</div>
+      <div class="timer" id="timer14">00:00:00</div>
+      <div class="button-container">
+        <button onclick="startTimer('14')">▶</button>
+        <button onclick="setTimer('14', '30')">30</button>
+        <button onclick="setTimer('14', '60')">60</button>
+        <button onclick="stopTimer('14')">
+          <img src="/static/assets/pause-icon.svg" width="8" />
+        </button>
+        <button onclick="clearTimer('14')">⯀</button>
+        <button onclick="setOutOfOrder('14')">❌</button>
+        <button onclick="setMember('14')"><img src="/static/assets/member-icon.svg" width="24" /></button>
+        <button onclick="setReserved('14')"><img src="/static/assets/reserved-icon.svg" width="24" /></button>
       </div>
+    </div>
 
-      <div class="timer-container">
-        <div class="timer-number" id="tn17">17</div>
-        <div class="timer" id="timer17">00:00:00</div>
-        <div class="button-container">
-          <button onclick="startTimer('17')">▶</button>
-          <button onclick="setTimer('17', '30')">30</button>
-          <button onclick="setTimer('17', '60')">60</button>
-          <button onclick="stopTimer('17')">
-            <img src="assets/pause-icon.svg" width="8" />
-          </button>
-          <button onclick="clearTimer('17')">⯀</button>
-          <button onclick="setOutOfOrder('17')">❌</button>
-          <button onclick="setMember('17')"><img src="assets/member-icon.svg" width="24" /></button>
-          <button onclick="setReserved('17')"><img src="assets/reserved-icon.svg" width="24" /></button>
-        </div>
+    <div class="timer-container">
+      <div class="timer-number" id="tn15">15</div>
+      <div class="timer" id="timer15">00:00:00</div>
+      <div class="button-container">
+        <button onclick="startTimer('15')">▶</button>
+        <button onclick="setTimer('15', '30')">30</button>
+        <button onclick="setTimer('15', '60')">60</button>
+        <button onclick="stopTimer('15')">
+          <img src="/static/assets/pause-icon.svg" width="8" />
+        </button>
+        <button onclick="clearTimer('15')">⯀</button>
+        <button onclick="setOutOfOrder('15')">❌</button>
+        <button onclick="setMember('15')"><img src="/static/assets/member-icon.svg" width="24" /></button>
+        <button onclick="setReserved('15')"><img src="/static/assets/reserved-icon.svg" width="24" /></button>
       </div>
+    </div>
 
-      <div class="timer-container">
-        <div class="timer-number" id="tn18">18</div>
-        <div class="timer" id="timer18">00:00:00</div>
-        <div class="button-container">
-          <button onclick="startTimer('18')">▶</button>
-          <button onclick="setTimer('18', '30')">30</button>
-          <button onclick="setTimer('18', '60')">60</button>
-          <button onclick="stopTimer('18')">
-            <img src="assets/pause-icon.svg" width="8" />
-          </button>
-          <button onclick="clearTimer('18')">⯀</button>
-          <button onclick="setOutOfOrder('18')">❌</button>
-          <button onclick="setMember('18')"><img src="assets/member-icon.svg" width="24" /></button>
-          <button onclick="setReserved('18')"><img src="assets/reserved-icon.svg" width="24" /></button>
-        </div>
+    <div class="timer-container">
+      <div class="timer-number" id="tn16">16</div>
+      <div class="timer" id="timer16">00:00:00</div>
+      <div class="button-container">
+        <button onclick="startTimer('16')">▶</button>
+        <button onclick="setTimer('16', '30')">30</button>
+        <button onclick="setTimer('16', '60')">60</button>
+        <button onclick="stopTimer('16')">
+          <img src="/static/assets/pause-icon.svg" width="8" />
+        </button>
+        <button onclick="clearTimer('16')">⯀</button>
+        <button onclick="setOutOfOrder('16')">❌</button>
+        <button onclick="setMember('16')"><img src="/static/assets/member-icon.svg" width="24" /></button>
+        <button onclick="setReserved('16')"><img src="/static/assets/reserved-icon.svg" width="24" /></button>
       </div>
+    </div>
 
-      <div class="timer-container">
-        <div class="timer-number" id="tn19">19</div>
-        <div class="timer" id="timer19">00:00:00</div>
-        <div class="button-container">
-          <button onclick="startTimer('19')">▶</button>
-          <button onclick="setTimer('19', '30')">30</button>
-          <button onclick="setTimer('19', '60')">60</button>
-          <button onclick="stopTimer('19')">
-            <img src="assets/pause-icon.svg" width="8" />
-          </button>
-          <button onclick="clearTimer('19')">⯀</button>
-          <button onclick="setOutOfOrder('19')">❌</button>
-          <button onclick="setMember('19')"><img src="assets/member-icon.svg" width="24" /></button>
-          <button onclick="setReserved('19')"><img src="assets/reserved-icon.svg" width="24" /></button>
-        </div>
+    <div class="timer-container">
+      <div class="timer-number" id="tn17">17</div>
+      <div class="timer" id="timer17">00:00:00</div>
+      <div class="button-container">
+        <button onclick="startTimer('17')">▶</button>
+        <button onclick="setTimer('17', '30')">30</button>
+        <button onclick="setTimer('17', '60')">60</button>
+        <button onclick="stopTimer('17')">
+          <img src="/static/assets/pause-icon.svg" width="8" />
+        </button>
+        <button onclick="clearTimer('17')">⯀</button>
+        <button onclick="setOutOfOrder('17')">❌</button>
+        <button onclick="setMember('17')"><img src="/static/assets/member-icon.svg" width="24" /></button>
+        <button onclick="setReserved('17')"><img src="/static/assets/reserved-icon.svg" width="24" /></button>
       </div>
+    </div>
 
-      <div class="timer-container">
-        <div class="timer-number" id="tn20">20</div>
-        <div class="timer" id="timer20">00:00:00</div>
-        <div class="button-container">
-          <button onclick="startTimer('20')">▶</button>
-          <button onclick="setTimer('20', '30')">30</button>
-          <button onclick="setTimer('20', '60')">60</button>
-          <button onclick="stopTimer('20')">
-            <img src="assets/pause-icon.svg" width="8" />
-          </button>
-          <button onclick="clearTimer('20')">⯀</button>
-          <button onclick="setOutOfOrder('20')">❌</button>
-          <button onclick="setMember('20')"><img src="assets/member-icon.svg" width="24" /></button>
-          <button onclick="setReserved('20')"><img src="assets/reserved-icon.svg" width="24" /></button>
-        </div>
+    <div class="timer-container">
+      <div class="timer-number" id="tn18">18</div>
+      <div class="timer" id="timer18">00:00:00</div>
+      <div class="button-container">
+        <button onclick="startTimer('18')">▶</button>
+        <button onclick="setTimer('18', '30')">30</button>
+        <button onclick="setTimer('18', '60')">60</button>
+        <button onclick="stopTimer('18')">
+          <img src="/static/assets/pause-icon.svg" width="8" />
+        </button>
+        <button onclick="clearTimer('18')">⯀</button>
+        <button onclick="setOutOfOrder('18')">❌</button>
+        <button onclick="setMember('18')"><img src="/static/assets/member-icon.svg" width="24" /></button>
+        <button onclick="setReserved('18')"><img src="/static/assets/reserved-icon.svg" width="24" /></button>
       </div>
-      <!-- <div class="footer">
+    </div>
+
+    <div class="timer-container">
+      <div class="timer-number" id="tn19">19</div>
+      <div class="timer" id="timer19">00:00:00</div>
+      <div class="button-container">
+        <button onclick="startTimer('19')">▶</button>
+        <button onclick="setTimer('19', '30')">30</button>
+        <button onclick="setTimer('19', '60')">60</button>
+        <button onclick="stopTimer('19')">
+          <img src="/static/assets/pause-icon.svg" width="8" />
+        </button>
+        <button onclick="clearTimer('19')">⯀</button>
+        <button onclick="setOutOfOrder('19')">❌</button>
+        <button onclick="setMember('19')"><img src="/static/assets/member-icon.svg" width="24" /></button>
+        <button onclick="setReserved('19')"><img src="/static/assets/reserved-icon.svg" width="24" /></button>
+      </div>
+    </div>
+
+    <div class="timer-container">
+      <div class="timer-number" id="tn20">20</div>
+      <div class="timer" id="timer20">00:00:00</div>
+      <div class="button-container">
+        <button onclick="startTimer('20')">▶</button>
+        <button onclick="setTimer('20', '30')">30</button>
+        <button onclick="setTimer('20', '60')">60</button>
+        <button onclick="stopTimer('20')">
+          <img src="/static/assets/pause-icon.svg" width="8" />
+        </button>
+        <button onclick="clearTimer('20')">⯀</button>
+        <button onclick="setOutOfOrder('20')">❌</button>
+        <button onclick="setMember('20')"><img src="/static/assets/member-icon.svg" width="24" /></button>
+        <button onclick="setReserved('20')"><img src="/static/assets/reserved-icon.svg" width="24" /></button>
+      </div>
+    </div>
+    <!-- <div class="footer">
         No rapid fire. All firearms must remain in a case unless inside shooting stall.
       </div>
         <div class="footer">Thank you for shooting safely at Range USA!</div>
     </div> -->
-  </body>
-  <script src="hotkeys.js"></script>
-  <script src="scripts.js"></script>
+
+    <script src="/static/hotkeys.js"></script>
+
+    <script>
+
+      var serverConfig = {
+        port: "{{.Port}}",
+        serverIP: "{{.ServerIP}}"
+      };
+
+      const server = "http://" + serverConfig.serverIP + serverConfig.port;
+
+      function refresh() {
+        let promise = fetch(server + "/update/");
+      }
+
+      window.addEventListener("load", refresh); // call refresh on opening the timer
+
+      function startTimer(buttonNumber) {
+        fetch(server + "/start/" + buttonNumber, { mode: "no-cors" });
+        console.log("Starting timer...");
+      }
+
+      function stopTimer(buttonNumber) {
+        fetch(server + "/stop/" + buttonNumber, { mode: "no-cors" });
+        console.log("Stopping timer...");
+      }
+
+      function clearTimer(buttonNumber) {
+        fetch(server + "/clear/" + buttonNumber, { mode: "no-cors" });
+        console.log("Stopping timer...");
+      }
+
+      function getRunning(buttonNumber) {
+        fetch(server + "/getrunning/" + buttonNumber)
+          .then((response) => response.json())
+          .then((data) => console.log(data));
+      }
+
+      function setOutOfOrder(buttonNumber) {
+        fetch(server + "/outoforder/" + buttonNumber, {
+          mode: "no-cors",
+        });
+      }
+
+      function setMember(buttonNumber) {
+        fetch(server + "/member/" + buttonNumber, { mode: "no-cors" });
+      }
+
+      function setReserved(buttonNumber) {
+        fetch(server + "/reserved/" + buttonNumber, { mode: "no-cors" });
+      }
+
+      function setTimer(buttonNumber, value) {
+        fetch(server + "/settime/" + buttonNumber + "/" + value, {
+          mode: "no-cors",
+        });
+      }
+
+      function delay(time) {
+        return new Promise((resolve) => setTimeout(resolve, time));
+      }
+      // Convert an integer to a string in the format 00:00:00 (eg 3600 to 01:00:00)
+      function FormatTime(seconds) {
+        let time = new Date(1000 * seconds).toISOString().substr(11, 8);
+        return time;
+      }
+
+      let updateInit = false;
+
+      async function Update() {
+        // Ensure Update is run only once
+        if (updateInit) {
+          // Update already initialized
+          return;
+        }
+
+        updateInit = true;
+
+        console.log("Begin update");
+        while (updateInit) {
+
+          console.log("Fetching state");
+          fetch(server + "/getstate/")
+            .then((response) => response.json())
+            .then((data) => {
+              for (let i = 1; i < 21; i++) {
+                RedrawTimers(
+                  data[i].Id,
+                  data[i].Elapsed,
+                  data[i].Member,
+                  data[i].Reserved,
+                  data[i].OutOfOrder,
+                  data[i].Expired
+                );
+              }
+            });
+          await delay(1000);
+        }
+      }
+      window.addEventListener("load", Update);
+
+      function RedrawTimers(
+        id,
+        elapsed,
+        member,
+        reserved,
+        outOfOrder,
+        expired
+      ) {
+        let target = document.getElementById("timer" + id);
+        let tn = document.getElementById("tn" + id);
+        target.innerHTML = FormatTime(elapsed);
+        if (member) {
+          tn.innerHTML = id + " - " + "Member";
+        } else if (!member) {
+          tn.innerHTML = id;
+        }
+
+        if (reserved) {
+          target.innerHTML = "Reserved";
+        }
+
+        if (outOfOrder) {
+          target.innerHTML = `<span class="outOfOrderMessage">Out of Order</span>`;
+        }
+
+        if (expired) {
+          target.innerHTML = `<span class="expiredMessage">00:00:00</span>`;
+        }
+      }
+
+      hotkeys("ctrl+shift+h", function (event, handler) {
+        switch (handler.key) {
+          case "ctrl+shift+h":
+            hideButtons();
+            break;
+          default:
+            alert(event);
+        }
+      });
+
+      let buttonsHidden = false;
+
+      function hideButtons() {
+        let p = document.getElementsByClassName("button-container");
+
+        if (buttonsHidden == false) {
+          for (i = 0; i < p.length; i++) {
+            p[i].style.display = "none";
+          }
+
+          console.log("Buttons hidden");
+          buttonsHidden = true;
+        } else if (buttonsHidden == true) {
+          for (i = 0; i < p.length; i++) {
+            p[i].style.display = "block";
+          }
+
+          console.log("Buttons visible");
+          buttonsHidden = false;
+        }
+      }
+    </script>
+</body>
+
 </html>

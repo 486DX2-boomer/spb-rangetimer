@@ -10,6 +10,7 @@ import (
 	"os/exec"
 	"strconv"
 	"strings"
+	"text/template"
 	"time"
 )
 
@@ -24,11 +25,38 @@ func main() {
 	}
 
 	var c Config
-	c.Load()
+	config, err := c.Load()
+	if err != nil {
+		log.Panic("Couldn't load config: ", err)
+	}
+
+	fmt.Println(config.ServerIP, config.Port)
+
+	// http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	// 	http.ServeFile(w, r, r.URL.Path[1:])
+	// })
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./static"))))
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, r.URL.Path[1:])
+		pageVariables := Config{
+			Port:     config.Port,
+			ServerIP: config.ServerIP,
+		}
+
+		// Insert the server endpoint into scripts.js
+		tmpl, err := template.ParseFiles("index.html")
+		if err != nil {
+			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+			return
+		}
+
+		// Execute the template with the PageVariables
+		err = tmpl.Execute(w, pageVariables)
+		if err != nil {
+			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+		}
 	})
+
 	http.HandleFunc("/hello", Hello)
 	http.HandleFunc("/start/", Start)
 	http.HandleFunc("/stop/", Stop)
@@ -41,8 +69,8 @@ func main() {
 	http.HandleFunc("/outoforder/", SetOutOfOrder)
 	http.HandleFunc("/settime/", setTime)
 
-	log.Println("Starting server...")
-	err := http.ListenAndServe(":8090", nil)
+	fmt.Printf("Starting server at port %s on %s. \n", config.Port, config.ServerIP)
+	err = http.ListenAndServe(config.Port, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
